@@ -1,0 +1,49 @@
+Interacting with DOM
+
+1)Navigating with DOM
+2)Changing and manipulating DOM
+3)Interacting with forms
+
+We will use developer tools mostly
+1)DOM-document object model
+
+write document on console.You will see the entire document on the web page.So all the code falls under document.each web page is a document.under document there are classes and ids and we can manipulate them
+
+2)Get dom elements by id
+document.getElementById('ajax-error-message').
+Returns the element having the id "ajax-error-message"
+
+Lets store it in a variable
+var error=document.getElementById('ajax-error-message').
+error->Enter
+You will see the entire DOM having the id "ajax-error-message"
+
+3)Get dom elements by class
+
+document.getElementsByClassName('facebox')
+
+Output=[div#facebox.facebox, facebox: div#facebox.facebox]
+
+Now this is not an array.This is HTML collection.There are 2 elements having this class
+You can see each individual element by
+
+document.getElementsByClassName('facebox')[0]=1st element
+document.getElementsByClassName('facebox')[1]=2nd element
+
+Javascript is 0 index based
+
+4) get dom elements by tag name
+
+document.getElementsByTagName('li')
+(25) [li.ml-2, li.ml-4, li.ml-4, li.ml-4, li.ml-4, li, li, li, li.select-menu-tab, li.select-menu-tab, li, li, li, li.mr-3, li.mr-3, li.mr-3, li.mr-3, li.mr-3, li, li.mr-3, li.mr-3, li.mr-3, li.mr-3, li.mr-3, li]
+
+Here there are 25 elements
+and type is
+
+_proto__
+:
+HTMLCollection
+
+We can access individual elements by [0],[1] etc
+
+

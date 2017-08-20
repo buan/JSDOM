@@ -1,0 +1,38 @@
+Cycling through the DOM elements:
+Since the DOM elements are HTML collection,we need to convert the same into array and then display them
+
+Method1:
+var lis=document.getElementsByTagName('li')
+for(i=0;i<lis.length;i++)
+{
+console.log(lis[i]);//shows each li tags
+}
+
+Shorter way:
+var lis=document.getElementsByTagName('li')
+
+console.log(Array.isArray(lis))//checks if it is an array:True for yes and False for No.In our case it is No
+
+console.log(Array.isArray(Array.from(lis)))//converts it into array
+
+titles.forEach(function(item){
+console.log(titles)
+})
+
+
+Query Selector:
+Same thing as $ in jquery
+document.querySelector(".name")=will return element having class as name
+We can list here css selector here and put in query selector argument
+
+queryselector selects only one element..first element
+
+document.querySelectorAll(".name")=will return all elements having class as name
+
+[li.name, li.name, li.name, li.name]
+
+Again we will have to convert it into array
+
+Array.from(document.querySelectorAll(".name")).forEach(function(item){
+    console.log(item);
+});
