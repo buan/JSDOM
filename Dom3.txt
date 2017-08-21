@@ -2,5 +2,10 @@ Change content in a webpage:
 
 1)Before that we need to know that query selector elements are not HTML collection by default.They are NodeList by default.For elements in NodeList we dont need to convert it into array.We can directly loop through the elements by forEach method.
 
+Refer to app.js
 
+DOM nodes:
+everything in the document is a node.<html>,<div>
+
+Refer to app2.js/index2.html/https://www.w3schools.com/Jsref/prop_node_nodetype.asp
 
