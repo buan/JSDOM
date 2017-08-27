@@ -7,5 +7,20 @@ Refer to app.js
 DOM nodes:
 everything in the document is a node.<html>,<div>
 
-Refer to app2.js/index2.html/https://www.w3schools.com/Jsref/prop_node_nodetype.asp
+
+2)console.log("Nodetype is:"+nodetype.nodeType);
+
+https://www.w3schools.com/Jsref/prop_node_nodetype.asp
+You will get the node list from here
+
+3)console.log("Node element is:"+nodetype.nodeName);//DIV or LI or P
+
+4)console.log("Node element has child nodes:"+nodetype.hasChildNodes());//TRUE or FALSE
+
+5)var nodetype1=document.querySelector(".list-name");
+const clonedelement=nodetype1.cloneNode(true);
+//if true is passed then all the child nodes will come
+// if false is passed then only the outer html structure will be logged
+
+console.log(clonedelement);//Clone an element
 

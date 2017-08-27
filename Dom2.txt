@@ -16,7 +16,7 @@ console.log(Array.isArray(lis))//checks if it is an array:True for yes and False
 console.log(Array.isArray(Array.from(lis)))//converts it into array
 
 titles.forEach(function(item){
-console.log(titles)
+console.log(titles)//shows each li tags
 })
 
 
