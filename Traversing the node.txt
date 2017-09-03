@@ -1,1 +1,53 @@
 All code regarding this will be available on index3.html/app3.js
+
+We will select an element and traverse to any element we like..be it a child or a parent node
+
+1)Selecting parent node/Element
+
+console.log("The parent node is"+listname.parentNode);//Shows parent node
+console.log("The parent node is"+listname.parentElement);//shows parent Element
+
+<body></body>
+
+2)Selecting parent of a parent element
+console.log("The parent node is"+listname.parentElement.parentElement);//shows parent Element of the Parent Element
+
+<html></html>(2 levels up)
+
+We can chain js methods to each other
+
+2)Selecting ChildNodes
+
+console.log(listname.childNodes);//Returns child nodes from that element
+
+(9) [text, li.name, text, li.name, text, li.name, text, li.name, text]
+
+It returns text which means it returns line break too
+<div></div>->Line break
+<p></p>
+
+console.log(listname.children);//Returns all childnodes without text nodes
+
+[li.name, li.name, li.name, li.name]
+
+
+
+DOM traversal between siblings(elements at same level)
+
+1) Get next sibling
+
+var listname=document.querySelector(".name");
+console.log(listname.nextElementSibling)//Returns next element sibling
+
+<li class="name">Two</li>
+
+2)Get previous sibling
+
+var listname=document.querySelector(".name:nth-child(2)");
+console.log(listname.previousElementSibling);//Returns previous element sibling
+
+<li class="name">One</li>
+
+3)Change text from any element
+
+listname.previousElementSibling.innerHTML+="<li class='name'>New Element</li>

@@ -1,0 +1,72 @@
+Event Listeners:
+We can attach any event to any element of a DOM.Lets try
+
+All code regarding this will be available on index4.html/app4.js
+
+1)Add events
+
+var listname=document.querySelector(".list-name");
+listname.addEventListener('click',function(e){
+   console.log(e.target);
+   console.log(e);
+});
+
+Here we are adding an event to an element having class as list-name
+.addEventListener is a function.
+click is the name of the event.
+"e" is the parameter passed for the callback function.
+e.target is the target element where it is clicked.
+
+So it returns the element which is clicked.If you click on 
+3.Three,it will return:
+<li class="name">Three</li>
+
+console.log(e); will return all properties of e
+
+
+2)Removing an element
+
+var listname=document.querySelector(".list-name");
+listname.addEventListener('click',function(e){
+   console.log(e.target);
+});
+
+var delete1=document.querySelectorAll("#delete");
+Array.from(delete1).forEach(function(delete1){
+delete1.addEventListener('click',function(e){
+
+    //console.log(delete1.parentElement);
+    delete1.parentElement.removeChild(delete1);
+    
+});
+});
+
+
+3)Event Bubbling:
+Here we should not attach the event listener to each and every element..Instead attach it to the parent element
+
+
+var delete1=document.querySelector(".list-name");
+delete1.addEventListener("click",function(e){
+   if(e.target.className=="delete") {
+       const li=e.target.parentElement.parentElement;
+       delete1.removeChild(li);
+   }
+});
+
+
+in our case,this is the structure
+<ul>-><li>-><span>-><button>..Our objective is to delete li.So we need to attach our event to the <ul> so that we can delete its child
+
+ const li=e.target.parentElement.parentElement;//selects ul element
+ delete1.removeChild(li);//delete its child which is <li>
+ 
+4)Prevent default behaviour
+
+We have added a href to link to google..When you click on it its default behaviour is link to Google PAge.We can prevent this by adding a method e.preventDefault.
+
+var google=document.querySelector("#google-trav");
+google.addEventListener('click',function(e){
+    e.preventDefault();
+    console.log("Default behaviour prevented");
+})

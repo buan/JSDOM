@@ -1,0 +1,20 @@
+All code regarding this will be available on index5.html/app5.js
+
+1)We have added 2 forms.
+If you want to see them,type document.forms in console
+
+[form#add1, form#add2, add1: form#add1, add2: form#add2]
+
+if you want to see each form,type document.forms[0]-1st form,document.forms[2]-2nd form
+
+If you want to see each form by id,document.forms["add1"]-1st form
+
+Now the default behaviour of a form is to trigger the submit event and the page gets refreshed.So for events to get triggered from our submit button we need to stop its default behaviour.Remember when you select your query as form, it will emit "submit" as event and when you select a button,it will select "click" and not submit as event.submit event is always associated with forms
+
+const btn=document.querySelector("#add1");//form id
+btn.addEventListener('submit',function(e){
+    e.preventDefault();
+    console.log("default behaviour prevented");
+     var textvalue=document.querySelector("input[type='text']").value;
+    console.log(textvalue);//print textbox value
+})
