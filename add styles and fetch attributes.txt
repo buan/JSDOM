@@ -1,0 +1,83 @@
+All code regarding this will be available on index6.html/app6.js/style6.css
+
+From the last tutorial we have added an element on click event.Now we want to add styles via js
+
+1)Add css via javascript
+
+suppose we want to add color to an li element
+var li=document.querySelector("li:last-child");
+li.style.color="blue"
+
+lets add two worded style like margin-top.Now in javascript we cant add words with "-" as it is a minus sign. We use camel case
+
+li.style.marginTop="20px" and it works!!
+
+2)Get class name
+
+li.className
+"name"
+
+
+3)Add Class
+li.className="test"
+"test"  //replaces name with test..so previous classes get deleted
+
+li.className+=" test1"	
+Now
+    <li class="test test1" style="color: blue; margin-top: 20px;">//both classes are there
+	
+
+Best Way:
+use li.classList.add("name")
+
+
+Now our code is
+
+const ol=document.querySelector(".list-name");
+const btn=document.querySelector("#add1");
+btn.addEventListener('submit',function(e){
+    e.preventDefault();
+    console.log("default behaviour prevented");
+    var textvalue=document.querySelector("input[type='text']").value;
+    //console.log(textvalue);
+    
+    //create element
+    var li=document.createElement("li");
+    var span=document.createElement("span");
+    var button=document.createElement("button");
+    
+   //add class to button
+	button.classList.add("delete");
+	
+   //add text to li and delete
+    li.textContent=textvalue;
+    button.textContent="delete";
+	
+	    
+    //append ol with li and li with delete
+   li.appendChild(span);
+   li.appendChild(button);
+   ol.appendChild(li);
+    
+})
+
+4)
+a)Fetch attribute of an element
+li.getAttribute("class")//class is the attribute name
+li.getAttribute("href")//href is attribute name
+
+b)Set Attribute
+li.setAttribute("class","test-1")//another way of changing class
+
+c)Check whether it has attribute
+li.hasAttribute("class")//checks if it has an attribute class
+TRUE
+li.hasAttribute("href")//checks if it has an attribute href
+FALSE
+
+d)remove Attribute
+li.removeAttribute("class")
+<button>Delete</button>
+
+li.setAttribute("class","delete")
+<button class="delete">Delete</button>
