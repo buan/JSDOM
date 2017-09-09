@@ -1,0 +1,23 @@
+All code regarding this will be available on index7.html/app7.js/style7.css
+
+1)Create a checkbox first in the html form
+
+<input type="checkbox" id="hide">Hide elements<br>
+
+
+2)On the js file add these code
+
+if the checkbox property is checked then make the css of the ol list to display:none else make it dispaly:block.We are adding this to change event rather than clicked
+
+const hidebox=document.querySelector("#hide");
+hidebox.addEventListener("change",function(e){
+	
+	if(hidebox.checked)
+		{
+			ol.style.display="none";
+		}
+	else
+		{
+			ol.style.display="block";
+		}
+});
