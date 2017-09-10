@@ -1,0 +1,5 @@
+All code regarding this will be available on index8.html/app8.js/style7.css
+
+In this lesson we are going to create custom filter using simple javascript
+
+There will be a search text and when we write anything it will show those text which matches the elements.We will use the keyup function for this..keyup function means when the key is released the event is fired.
