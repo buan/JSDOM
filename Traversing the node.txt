@@ -51,3 +51,10 @@ console.log(listname.previousElementSibling);//Returns previous element sibling
 3)Change text from any element
 
 listname.previousElementSibling.innerHTML+="<li class='name'>New Element</li>
+
+
+4)Selecting first child
+listname.firstElementChild-select first child
+
+5)Selecting first child
+listname.lastElementChild-select last child
