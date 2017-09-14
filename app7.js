@@ -30,7 +30,7 @@ btn.addEventListener('submit',function(e){
 //hide elements
 const hidebox=document.querySelector("#hide");
 hidebox.addEventListener("change",function(e){
-	
+	console.log(hidebox.checked);
 	if(hidebox.checked)
 		{
 			ol.style.display="none";

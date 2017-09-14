@@ -47,3 +47,22 @@ HTMLCollection
 We can access individual elements by [0],[1] etc
 
 
+5)Some more methods to reach:
+console.dir(document)//Shows full document directory lists
+
+eg:-
+#document
+I0_1505365334389
+:
+Window {window: Window, self: Window, location: Location, closed: false, frames: Window, …}
+URL
+:
+"http://www.wampserver.com/en/"
+
+each of the property can be reached by a dot(.) method
+document.URL,document.links
+
+6)Show dom structure
+document.All
+
+
