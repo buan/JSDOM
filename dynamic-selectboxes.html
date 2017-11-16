@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <select id="main">
+        <option value="1">Junior Software Developer</option>
+        <option value="2">Senior Developer</option>
+        <option value="3">Developer</option>
+    </select>
+    <select id="sub">
+        <option value="1">none</option>
+    </select>
+    <div id="selected"></div>
+</body>
+<script>
+ const st=document.querySelector('#main');
+    st.addEventListener("change",changeme);
+    function changeme()
+    {
+        //console.log(st.value);
+        if(st.value==1)
+            {
+                var x = document.getElementById("sub");
+                x.options.length=0;
+                var option = document.createElement("option");
+                st.appendChild(option);
+                x.options[x.options.length] = new Option('Stuti', 'Stuti');
+                x.options[x.options.length] = new Option('Priyam', 'Priyam');
+            }
+         if(st.value==2)
+            {
+                var x = document.getElementById("sub");
+                x.options.length=0;
+                var option = document.createElement("option");
+                st.appendChild(option);
+                 x.options[x.options.length] = new Option('Amit', 'Amit');
+                x.options[x.options.length] = new Option('Subhransu', 'Subhransu');
+            }
+         if(st.value==3)
+            {
+                var x = document.getElementById("sub");
+                x.options.length=0;
+                var option = document.createElement("option");
+                st.appendChild(option);
+                 x.options[x.options.length] = new Option('Soumya', 'Soumya');
+                x.options[x.options.length] = new Option('Suman', 'Suman');
+               
+            }
+        //document.getElementById('selected').innerHTML="Selected option is"+st.value;
+    }
+</script>
+</html>
