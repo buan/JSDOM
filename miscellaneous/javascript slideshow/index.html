@@ -1,0 +1,38 @@
+<script>
+
+    var i=0; //variable to loop through the images. This is the start value
+    var images =[];
+    var time=3000;//interval to show next slide show
+
+    //image list
+    images[0]="image1.jpg";
+    images[1]="image2.jpg";
+    images[2]="image3.jpg";
+    
+    //function to change image
+    function changeImg(){
+        document.slide.src=images[i];
+        if(i< (images.length-1)){
+                i++;
+                console.log(i);
+        }
+        else{
+            i=0;
+        }
+        window.setTimeout("changeImg()",3000);
+    }
+    window.onload=changeImg;
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img name="slide" height="400" width="400">
+</body>
+</html>
