@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <h3 class="text-white text-center mt-5">India Zipcode Info</h3>
+                <form class="form-control">
+
+                        
+                              <div class="card">
+                                    <div class="card-header">
+                                            <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                      <span class="input-group-text" id="basic-addon1">
+                                                          <span class="glyphicons glyphicons-power"></span> 
+                                                      </span>
+                                                    </div>
+                                                    <input type="text" id="zip" class="form-control" placeholder="Zipcode" aria-label="Username" aria-describedby="basic-addon1">
+                                            </div>
+                    
+                                    </div>
+                                    <div class="card-body zip-details">
+                                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                     
+                                    </div>
+                                  </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelector("#zip").addEventListener("input",getzip);
+    function getzip(){
+        //console.log(document.querySelector("#zip").value);
+let zipvalue=document.querySelector("#zip").value;
+        //create XHR object
+		var xhr=new XMLHttpRequest();
+		
+		//OPEN-type,url/file,async
+		xhr.open('GET','http://api.zippopotam.us/in/'+zipvalue,true);
+		
+		//function to perform on onload
+		xhr.onload=function(){
+			if(this.status==200)//200 is for status 'OK'
+				{
+                   
+                    var result=JSON.parse(this.responseText);
+                  
+                    console.log(result[0].country);
+					
+				}
+		}
+		
+		xhr.send();
+    }
+</script>
+</html>
