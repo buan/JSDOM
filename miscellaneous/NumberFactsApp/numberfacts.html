@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto ">
+            <h3 class="mt-3 text-center text-white">Simple Number Fact</h3>  
+
+            <form class="text-left mt-2">
+                <div class="form-group">
+                  <input type="number" class="form-control form-control-lg" id="weight-conv" aria-describedby="emailHelp" placeholder="Enter any random number">
+                </div>
+              </form>
+              <div class="card mb-2 text-black" id="dollar">
+                <div class="card-body bg-primary text-white">
+                    <h5 class="card-title">Interesting Fact</h5>
+                    <div id="dollar-output"></div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+   document.getElementById("dollar").style.display="none";
+    document.getElementById("weight-conv").addEventListener("input",function(e){
+		if(e.target.value){
+			document.getElementById("dollar").style.display="block";
+		}
+		else{
+			document.getElementById("dollar").style.display="none";
+		}
+        
+        let value=e.target.value;
+	   
+	   //console.log("button clicked");
+		
+		//create XHR object
+		var xhr=new XMLHttpRequest();
+		
+		//OPEN-type,url/file,async
+		xhr.open('GET','http://numbersapi.com/'+value,true);
+		
+		//function to perform on onload
+		xhr.onload=function(){
+			if(this.status==200 && e.target.value!='')//200 is for status 'OK'
+				{
+					console.log(this.responseText);//logs the text from ajax
+					document.getElementById("dollar-output").innerHTML=this.responseText;
+				}
+		}
+		
+		xhr.send();
+		/*HTTP status codes
+		200=OK
+		404=NOT Found
+		403=forbidden
+		*/
+
+    })
+</script>
+</html>

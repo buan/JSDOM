@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 ">
+            <h3 class="mt-3 text-center text-white">Simple Price converter</h3>  
+
+            <form class="text-left mt-2">
+                <div class="form-group">
+                  <input type="number" class="form-control" id="weight-conv" aria-describedby="emailHelp" placeholder="Enter amount in Rs.">
+                </div>
+              </form>
+              <div class="card mb-2 text-black" id="dollar">
+                <div class="card-body bg-primary text-white">
+                    <h5 class="card-title">In Dollars</h5>
+                    <div id="dollar-output"></div>
+                </div>
+              </div>
+              <div class="card mb-2" id="pound">
+                <div class="card-body bg-info text-white">
+                    <h5 class="card-title">In Pounds</h5>
+                    <div id="pound-output"></div>
+                </div>
+              </div>
+              <div class="card mb-2" id="taka">
+                <div class="card-body bg-danger text-white">
+                    <h5 class="card-title">In Bangladeshi taka</h5>
+                    <div id="taka-output"></div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+   document.getElementById("dollar").style.display="none";
+   document.getElementById("pound").style.display="none";
+   document.getElementById("taka").style.display="none";
+    document.getElementById("weight-conv").addEventListener("input",function(e){
+        document.getElementById("dollar").style.display="block";
+   document.getElementById("pound").style.display="block";
+   document.getElementById("taka").style.display="block";
+        let value=e.target.value
+       document.getElementById("dollar-output").innerHTML=value/66.67;
+
+       document.getElementById("pound-output").innerHTML=value/90.90;
+
+       document.getElementById("taka-output").innerHTML=value/.78;
+    })
+</script>
+</html>
