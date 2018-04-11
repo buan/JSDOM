@@ -7,13 +7,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
 </head>
 <body class="bg-dark">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <h3 class="text-white text-center mt-5">India Zipcode Info</h3>
-                <form class="form-control">
+                <h1 class="text-white text-center mt-5">India Zipcode Info</h1>
+                <form class="form-control zip-form">
 
                         
                               <div class="card">
@@ -21,7 +24,7 @@
                                             <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                       <span class="input-group-text" id="basic-addon1">
-                                                          <span class="glyphicons glyphicons-power"></span> 
+                                                        <i class="fa fa-map-pin "></i>
                                                       </span>
                                                     </div>
                                                     <input type="text" id="zip" class="form-control" placeholder="Zipcode" aria-label="Username" aria-describedby="basic-addon1">
@@ -29,7 +32,12 @@
                     
                                     </div>
                                     <div class="card-body zip-details">
-                                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                        <h5 class="card-title location">
+                                           </h5>
+                                        
+                                      <p class="card-text" id="area-details">
+                                        
+                                      </p>
                                      
                                     </div>
                                   </div>
@@ -40,10 +48,12 @@
     </div>
 </body>
 <script>
-    document.querySelector("#zip").addEventListener("input",getzip);
-    function getzip(){
-        //console.log(document.querySelector("#zip").value);
-let zipvalue=document.querySelector("#zip").value;
+
+    document.querySelector(".zip-form").addEventListener("submit",showzip);
+    function showzip(e){
+        e.preventDefault();
+        console.log(123);
+        let zipvalue=document.querySelector("#zip").value;
         //create XHR object
 		var xhr=new XMLHttpRequest();
 		
@@ -52,17 +62,36 @@ let zipvalue=document.querySelector("#zip").value;
 		
 		//function to perform on onload
 		xhr.onload=function(){
+           
 			if(this.status==200)//200 is for status 'OK'
 				{
                    
+                    document.querySelector(".location").innerHTML="Location Info";
                     var result=JSON.parse(this.responseText);
-                  
-                    console.log(result[0].country);
+                    var output="";
+                    console.log(result.places[0]['place name']);
+                    output=output+
+                    "<p>Latitude:"+result.places[0].latitude+"</p>"+
+                    "<p>Longitude:"+result.places[0].longitude+"</p>"+
+                    "<p>State:"+result.places[0].state+"</p>"+
+                    "<p>Place Name:"+result.places[0]['place name']+"</p>"+
+                    "<p>State: "+result.places[0].state+"</p>"                    
+                    
+                    ;
+                    document.getElementById("area-details").innerHTML=output;
 					
-				}
+                }
+                else{
+                    document.getElementById("area-details").innerHTML="No Results Found";
+                }
 		}
 		
 		xhr.send();
+    }
+    document.querySelector("#zip").addEventListener("input",getzip);
+    function getzip(){
+        //console.log(document.querySelector("#zip").value);
+
     }
 </script>
 </html>
