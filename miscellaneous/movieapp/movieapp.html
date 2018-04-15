@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+       
+    <div class="container-fluid">
+       <div class="row">
+           <div class="col-md-12 bg-primary">
+                <h3 class="text-center text-white">Find Your Movie</h3>
+           </div>
+            <div class="col-md-10 mx-auto">
+                <div class="jumbotron mt-5">
+                    <form id="movie">
+                        <div class="form-group">
+                          <label for="movietext">Search for movies</label>
+                          <input type="text" class="form-control" id="movietext" aria-describedby="emailHelp" placeholder="Enter movie name">
+                          <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                        </div>
+                        
+                        <button type="submit" class="btn search btn-primary btn-lg">Submit</button>
+                      </form>
+                    
+                  </div>
+            </div>
+
+            <div class="col-md-10 mx-auto">
+                    <div class="jumbotron mt-5 allresult">
+                        <div class="container">
+                            <div class="row" id="searchresult">
+                            
+                            </div>
+                          </div>
+                        
+                      </div>
+                </div>
+
+        
+
+           
+       </div>
+        </div>
+    </div>
+</body>
+<script>
+        document.querySelector(".allresult").style.display="none";
+    document.querySelector("#movie").addEventListener("submit", searchMovie);
+    function searchMovie(e){
+        e.preventDefault();
+        document.querySelector(".allresult").style.display="block";
+        //console.log(123);
+        var searchtext=document.querySelector("#movietext").value;
+//        console.log(searchtext);
+             //create XHR object
+		var xhr=new XMLHttpRequest();
+		
+		//OPEN-type,url/file,async
+		xhr.open('GET','http://www.omdbapi.com/?s='+searchtext+'&apikey=afff1b79',true);
+		
+		//function to perform on onload
+		xhr.onload=function(){
+           
+			if(this.status==200)//200 is for status 'OK'
+				{
+                   
+                    //console.log(this.responseText);
+                    var result=JSON.parse(this.responseText);
+                   
+                    var i=0;
+                    var output="";
+                    
+                    while(i<result.Search.length){
+                        console.log(result.Search[i]);
+                        if(result.Search[i].Poster==='N/A'){
+                            result.Search[i].Poster="noimage.png";
+                        }
+                        output=output+`<div class='col-md mt-2'><div class='card' style='width: 18rem;'><img style='height:286px;' class='card-img-top img-thumbnail' src=`+result.Search[i].Poster+` width=50% height=50%  alt='Card image cap'><div class='card-body><h5 class='card-title px-3'><p class='px-3'><b>Title: </b>`+result.Search[i].Title+`</p></h5><p class='card-text px-3'><p class='px-3 d-none imdb'><b>Imdb Title: </b>`+result.Search[i].imdbID+`</p></h5><p class='card-text px-3'><b>Plot: </b>Some quick example text to build on the card title and make up the bulk of the card's content.</p><button class='btn btn-primary mb-3 mx-3' id='moviedetails' onclick='getmovie("`+result.Search[i].imdbID+`")'>Find Details</button></div></div></div>`;
+                        i++;
+                        document.getElementById("searchresult").innerHTML=output;
+                     }
+                  
+                }
+    }
+    xhr.send();
+
+
+}
+function getmovie(id){
+    localStorage.setItem("mid",id);
+    console.log(localStorage.getItem("mid"));
+    document.querySelector("#searchresult").remove;
+    var movieop="<div class='card mx-auto'><div class='card-header'>Featured</div><div class='card-body'><h5 class='card-title'>Special title treatment</h5><p class='card-text'>With supporting text below as a natural lead-in to additional content.</p><a href='#'' class='btn btn-primary'>Go somewhere</a></div></div>";
+    document.getElementById("searchresult").innerHTML=movieop;
+}
+
+</script>
+</html>
