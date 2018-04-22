@@ -92,11 +92,40 @@
 }
 function getmovie(id){
     localStorage.setItem("mid",id);
-    console.log(localStorage.getItem("mid"));
+    var mid=localStorage.getItem("mid");
     document.querySelector("#searchresult").remove;
-    var movieop="<div class='card mx-auto'><div class='card-header'>Featured</div><div class='card-body'><h5 class='card-title'>Special title treatment</h5><p class='card-text'>With supporting text below as a natural lead-in to additional content.</p><a href='#'' class='btn btn-primary'>Go somewhere</a></div></div>";
-    document.getElementById("searchresult").innerHTML=movieop;
-}
+
+
+     //create XHR object
+		var xhr=new XMLHttpRequest();
+		
+		//OPEN-type,url/file,async
+		xhr.open('GET','http://www.omdbapi.com/?i='+mid+'&apikey=afff1b79',true);
+		
+		//function to perform on onload
+		xhr.onload=function(){
+           
+			if(this.status==200)//200 is for status 'OK'
+				{
+                   
+                    //console.log(this.responseText);
+                    var result=JSON.parse(this.responseText);
+                   
+                    var i=0;
+                    var movieop="";
+                    
+                    console.log(result);
+                    movieop=movieop+"<div class='card mx-auto'><div class='card-header'>Movie Details</div><div class='card-body'><h5 class='card-title'>"+result.Title+"</h5><p class='card-text'><b>Release Date</b>:"+result.Released+"</p><p class='card-text'><b>Genre</b>:"+result.Genre+"</p><p class='card-text'><b>Plot</b>:"+result.Plot+"</p><p class='card-text'><b>Language</b>:"+result.Language+"</p><p class='card-text'><b>Runtime</b>:"+result.Runtime+"</p><a href='#'' class='btn btn-primary'>Go Back</a><a href='https://www.imdb.com/title/"+mid+" '  class='btn btn-primary ml-2'>Go to Imdb site</a></div></div>";
+                        document.getElementById("searchresult").innerHTML=movieop;
+                     
+                     }
+                  
+                }
+                xhr.send();
+                
+    }
+ 
+
 
 </script>
 </html>
